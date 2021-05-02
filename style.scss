@@ -1,3 +1,5 @@
+@import 'colors';
+
 html {
     font-size: 62.5%; /* tzn 10px, protože standard je 16px */
     box-sizing: border-box;
@@ -55,9 +57,22 @@ header.header-news {
         position: absolute;
         top: 0;
         height: 100%;
-        opacity: 0.5;
+        border: none;
+        background-color: transparent;
+        color: rgba($black, .4); 
+        cursor: pointer;
+        border-radius: 0;
+        user-select: none;
+        transition: 0.5s;
         &.last {
             right: 0;
+        }
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: $black;
+            background-color: rgba($white, .4);
         }
     }
     & > div.header-news__container {

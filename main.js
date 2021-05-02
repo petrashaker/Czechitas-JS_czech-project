@@ -72,6 +72,7 @@ function populateNewsCarousel(news, startAt) {
         const newsDiv = createDivForNews(newsValue);
         header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
     }
+    checkButtonsVisibilty();
 }
 
 function createDivForNews(newsContents) {
@@ -115,6 +116,8 @@ buttonRight.addEventListener('click', () => {
     populateNewsCarousel(articles, carouselItemStart);
 });
 
-
-
-
+//ÚKOL Č. 2
+function checkButtonsVisibilty(){
+    buttonLeft.hidden = carouselItemStart === 0;
+    buttonRight.hidden = carouselItemStart >= (articles.length - carouselItemCount);
+}
