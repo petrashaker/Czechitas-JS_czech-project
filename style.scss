@@ -1,0 +1,70 @@
+html {
+    font-size: 62.5%; /* tzn 10px, protože standard je 16px */
+    box-sizing: border-box;
+}
+*, ::before, ::after { box-sizing: inherit; }
+
+body {
+    font-size: 1.6rem; /* tzn uživatel si může sám měnit velikost písma podle své potřeby */
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 4 novinky vedle sebe */
+.header-news {
+    text-decoration: underline;
+    color: gray;
+}
+
+header.header-news {
+    min-height: 18rem;
+    display: flex;
+}
+header.header-news > div {
+    flex: 1 0 0;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0rem 0rem 1rem 1rem;
+}
+.main-content__day {
+    aspect-ratio: 1/1;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: calc(100% / 7 - 2rem);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main-content__day:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+header.header-news {
+    & > button {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        opacity: 0.5;
+        &.last {
+            right: 0;
+        }
+    }
+    & > div.header-news__container {
+        display: flex;
+    }
+    position: relative;
+    min-height: 18rem;
+}
+
+ 

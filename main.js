@@ -1,4 +1,4 @@
-// INFO Z 2. LEKCE
+// INFO Z 1. LEKCE
 /* 
 const header = document.querySelector('header.header-news');
 
@@ -22,10 +22,23 @@ abcd
 `;
 */
 
-// INFO ZE 3. LEKCE
-const header = document.querySelector('header.header-news');
+//DOMÁCÍ ÚKOL Č. 1
+// const mainContent = document.querySelector('.main-content');
 
-const carouselItemCount = 4;
+// for (let i = 1; i <= 31; i++) {
+//     const daysDiv = document.createElement('div');
+//     daysDiv.className = 'main-content__day';
+//     mainContent.appendChild(daysDiv);
+//     daysDiv.innerText = [i];    
+// }
+
+
+// INFO ZE 2. LEKCE
+const header = document.querySelector('header.header-news > div.header-news__container'); //může být pouze header-news__container bez šipky a header-news
+
+const carouselItemCount = 2; //upravuje počet zpráv v aplikaci
+let carouselItemStart = 0;
+let articles; //vytáhli jsme proměnnou, kterou používáme ve fci, aby byla globální
 
 //VYŽÁDÁNÍ DAT ZE SERVERU
 /* verze 1
@@ -47,31 +60,61 @@ fetch('http://localhost:3000/news.json')
     .then(serverResponse => serverResponse.text())
     .then(responseText => {
         const data = JSON.parse(responseText);
-        populateNewsCarousel(data.articles); //data je objekt a přistupuji k articles (které jsou na serveru)
+        articles = data.articles;
+        populateNewsCarousel(data.articles, carouselItemStart); //data je objekt a přistupuji k articles (které jsou na serveru)
     });
 
-function populateNewsCarousel(news){
-    for(let i = 0; i < carouselItemCount; i ++) {
+
+function populateNewsCarousel(news, startAt) { 
+    header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
+    for(let i = startAt; i < (startAt + carouselItemCount); i ++) { //startAt přidáno pro posouvání carouselu
         const newsValue = news[i];
         const newsDiv = createDivForNews(newsValue);
-        header.appendChild(newsDiv);
+        header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
     }
 }
 
 function createDivForNews(newsContents) {
     const newsArticle = document.createElement('div');
-    newsArticle.innerText = newsContents.title; // newsContents je objekt a přistupuji k title (které je část articles na serveru)
+    newsArticle.classList.add('news-article');
+    newsArticle.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), transparent), url(${newsContents.image})`; //nastavujeme v JS, protože každá zpráva bude mít jiný obrázek
+
+    const title = document.createElement('span');
+    title.classList.add('news-article__title')
+    title.innerText = newsContents.title; // newsContents je objekt a přistupuji k title (které je část articles na serveru)
+
+    newsArticle.appendChild(title);
+
     return newsArticle;
 }
 
-//DOMÁCÍ ÚKOL Č. 1
-const mainContent = document.querySelector('.main-content');
+// function rotateCarouselLeft(){
+//     alert('ahoj')
+// }
 
-for (let i = 1; i <= 31; i++) {
-    const daysDiv = document.createElement('div');
-    daysDiv.className = 'main-content__day';
-    mainContent.appendChild(daysDiv);
-    daysDiv.innerText = [i];    
-}
+// function rotateCarouselRight(){
+
+// }
+
+
+const buttonLeft = document.querySelector('#carousel-button-left');
+const buttonRight = document.querySelector('#carousel-button-right');
+// const buttonLeft = document.getElementById('carousel-button-left');
+// const buttonRight = document.getElementById('carousel-button-right');
+
+buttonLeft.addEventListener('click', () => {
+    carouselItemStart --;
+    populateNewsCarousel(articles, carouselItemStart);
+});
+//verze 2
+// buttonLeft.addEventListener('click', rotateCarouselLeft); //pokud bych nechala rotateCarouselLeft() s uvozovkami, volám fci a při každém reload aplikaci vyskočí okno
+
+buttonRight.addEventListener('click', () => {
+    console.log(carouselItemStart, articles);
+    carouselItemStart ++;
+    populateNewsCarousel(articles, carouselItemStart);
+});
+
+
 
 
