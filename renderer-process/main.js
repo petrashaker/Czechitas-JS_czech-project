@@ -1,15 +1,11 @@
+import { NewsArticle } from './components/news-article/news-article.js';
+
 // INFO Z 1. LEKCE
 /* 
 const header = document.querySelector('header.header-news');
-
 const someDiv = document.createElement('div');
-
 header.appendChild(someDiv); // vytvoří nový div v headeru 
-
-
 someDiv.classList.add('ad-banner'); // přidá třídu k prvku div 
-
-
 const myAge = 87;
 
 someDiv.innerHTML = `
@@ -64,39 +60,16 @@ fetch('http://localhost:3000/news.json')
         populateNewsCarousel(data.articles, carouselItemStart); //data je objekt a přistupuji k articles (které jsou na serveru)
     });
 
-
 function populateNewsCarousel(news, startAt) { 
     header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
     for(let i = startAt; i < (startAt + carouselItemCount); i ++) { //startAt přidáno pro posouvání carouselu
         const newsValue = news[i];
-        const newsDiv = createDivForNews(newsValue);
+        const newsArticle = new NewsArticle();
+        const newsDiv = newsArticle.createDivForNews(newsValue);
         header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
     }
     checkButtonsVisibilty();
 }
-
-function createDivForNews(newsContents) {
-    const newsArticle = document.createElement('div');
-    newsArticle.classList.add('news-article');
-    newsArticle.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), transparent), url(${newsContents.image})`; //nastavujeme v JS, protože každá zpráva bude mít jiný obrázek
-
-    const title = document.createElement('span');
-    title.classList.add('news-article__title')
-    title.innerText = newsContents.title; // newsContents je objekt a přistupuji k title (které je část articles na serveru)
-
-    newsArticle.appendChild(title);
-
-    return newsArticle;
-}
-
-// function rotateCarouselLeft(){
-//     alert('ahoj')
-// }
-
-// function rotateCarouselRight(){
-
-// }
-
 
 const buttonLeft = document.querySelector('#carousel-button-left');
 const buttonRight = document.querySelector('#carousel-button-right');
@@ -121,3 +94,4 @@ function checkButtonsVisibilty(){
     buttonLeft.hidden = carouselItemStart === 0;
     buttonRight.hidden = carouselItemStart >= (articles.length - carouselItemCount);
 }
+
