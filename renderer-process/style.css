@@ -65,10 +65,23 @@ header.header-news > button {
   position: absolute;
   top: 0;
   height: 100%;
-  opacity: 0.5;
+  border: none;
+  background-color: transparent;
+  color: rgba(35, 35, 35, 0.4);
+  cursor: pointer;
+  border-radius: 0;
+  user-select: none;
+  transition: 0.5s;
 }
 header.header-news > button.last {
   right: 0;
+}
+header.header-news > button:focus {
+  outline: none;
+}
+header.header-news > button:hover {
+  color: #232323;
+  background-color: rgba(247, 247, 247, 0.4);
 }
 header.header-news > div.header-news__container {
   display: flex;
