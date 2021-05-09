@@ -31,7 +31,7 @@ export class Carousel {
     this.header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
     for (let i = this.carouselItemStart; i <
     (this.carouselItemStart + this.carouselItemsCount); i++) { //startAt přidáno pro posouvání carouselu
-      const newsValue = news[i];
+      const newsValue = this.articles[i];
       const newsArticle = new NewsArticle();
       const newsDiv = newsArticle.createDivForNews(newsValue);
       this.header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
