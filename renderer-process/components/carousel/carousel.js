@@ -3,6 +3,10 @@ export class Carousel {
     this.carouselItemStart = 0;
     this.carouselItemsCount = 2;
 
+    this.header = document.querySelector(
+        'header.header-news > div.header-news__container',
+    );
+
     this.buttonLeft = document.querySelector('#carousel-button-left');
     this.buttonRight = document.querySelector('#carousel-button-right');
 
@@ -26,7 +30,7 @@ export class Carousel {
     }
     this.header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
     for (let i = this.carouselItemStart; i <
-    (this.carouselItemStart + this.carouselItemCount); i++) { //startAt přidáno pro posouvání carouselu
+    (this.carouselItemStart + this.carouselItemsCount); i++) { //startAt přidáno pro posouvání carouselu
       const newsValue = news[i];
       const newsArticle = new NewsArticle();
       const newsDiv = newsArticle.createDivForNews(newsValue);
