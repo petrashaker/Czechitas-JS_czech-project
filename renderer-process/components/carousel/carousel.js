@@ -9,17 +9,17 @@ export class Carousel {
 
         this.buttonLeft.addEventListener('click', () => {
             this.carouselItemStart --;
-            populateNewsCarousel(articles, carouselItemStart);
+            this.populateNewsCarousel();
         });
 
         this.buttonRight.addEventListener('click', () => {
             this.carouselItemStart ++;
-            populateNewsCarousel(articles, carouselItemStart);
+            this.populateNewsCarousel();
         });
 
     }
 
-    populateNewsCarousel(news) { 
+    populateNewsCarousel(news) {
         this.articles = news;
         this.header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
         for(let i = this.carouselItemStart; i < (this.carouselItemStart + this.carouselItemCount); i ++) { //startAt přidáno pro posouvání carouselu
