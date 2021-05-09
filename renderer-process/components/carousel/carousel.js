@@ -20,7 +20,9 @@ export class Carousel {
     }
 
     populateNewsCarousel(news) {
-        this.articles = news;
+        if (undefined !== news) {
+            this.articles = news;
+        }
         this.header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
         for(let i = this.carouselItemStart; i < (this.carouselItemStart + this.carouselItemCount); i ++) { //startAt přidáno pro posouvání carouselu
             const newsValue = news[i];
