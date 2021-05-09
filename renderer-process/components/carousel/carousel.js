@@ -1,6 +1,7 @@
 export class Carousel {
   constructor() {
     this.carouselItemStart = 0;
+    this.carouselItemsCount = 2;
 
     this.buttonLeft = document.querySelector('#carousel-button-left');
     this.buttonRight = document.querySelector('#carousel-button-right');
@@ -33,10 +34,13 @@ export class Carousel {
     }
     this.checkButtonsVisibilty();
   }
+
+  checkButtonsVisibilty() {
+    this.buttonLeft.hidden = this.carouselItemStart === 0;
+    this.buttonRight.hidden = this.carouselItemStart >=
+        (this.articles.length - this.carouselItemsCount);
+  }
+
 }
 
-function checkButtonsVisibilty() {
-  buttonLeft.hidden = carouselItemStart === 0;
-  buttonRight.hidden = carouselItemStart >=
-      (articles.length - carouselItemCount);
-}
+
