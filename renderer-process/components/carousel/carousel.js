@@ -10,8 +10,6 @@ export class Carousel {
     this.buttonLeft = document.querySelector('#carousel-button-left');
     this.buttonRight = document.querySelector('#carousel-button-right');
 
-    this.checkButtonsVisibility = function checkButtonsVisibilty() {};
-
     this.buttonLeft.addEventListener('click', () => {
       this.carouselItemStart--;
       this.populateNewsCarousel();
