@@ -6,7 +6,7 @@ export class Carousel {
     this.buttonLeft = document.querySelector('#carousel-button-left');
     this.buttonRight = document.querySelector('#carousel-button-right');
 
-    this.checkButtonsVisibilty = function checkButtonsVisibilty() {};
+    this.checkButtonsVisibility = function checkButtonsVisibilty() {};
 
     this.buttonLeft.addEventListener('click', () => {
       this.carouselItemStart--;
@@ -32,10 +32,10 @@ export class Carousel {
       const newsDiv = newsArticle.createDivForNews(newsValue);
       this.header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
     }
-    this.checkButtonsVisibilty();
+    this.checkButtonsVisibility();
   }
 
-  checkButtonsVisibilty() {
+  checkButtonsVisibility() {
     this.buttonLeft.hidden = this.carouselItemStart === 0;
     this.buttonRight.hidden = this.carouselItemStart >=
         (this.articles.length - this.carouselItemsCount);
