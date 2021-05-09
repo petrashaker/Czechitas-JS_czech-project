@@ -6,6 +6,17 @@ export class Carousel {
         this.buttonRight = document.querySelector('#carousel-button-right');
 
         this.checkButtonsVisibilty = function checkButtonsVisibilty(){};
+
+        this.buttonLeft.addEventListener('click', () => {
+            this.carouselItemStart --;
+            populateNewsCarousel(articles, carouselItemStart);
+        });
+
+        this.buttonRight.addEventListener('click', () => {
+            this.carouselItemStart ++;
+            populateNewsCarousel(articles, carouselItemStart);
+        });
+
     }
 
     populateNewsCarousel(news) { 
@@ -21,16 +32,6 @@ export class Carousel {
     }
 }
 
-
-buttonLeft.addEventListener('click', () => {
-    this.carouselItemStart --;
-    populateNewsCarousel(articles, carouselItemStart);
-});
-
-buttonRight.addEventListener('click', () => {
-    this.carouselItemStart ++;
-    populateNewsCarousel(articles, carouselItemStart);
-});
 
 function checkButtonsVisibilty(){
     buttonLeft.hidden = carouselItemStart === 0;
