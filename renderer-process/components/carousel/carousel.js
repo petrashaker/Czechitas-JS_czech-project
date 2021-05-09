@@ -1,3 +1,5 @@
+import {NewsArticle} from '../news-article/news-article';
+
 export class Carousel {
   constructor() {
     this.carouselItemStart = 0;
