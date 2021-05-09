@@ -1,4 +1,4 @@
-import {NewsArticle} from '../news-article/news-article';
+import {NewsArticle} from '../news-article/news-article.js';
 
 export class Carousel {
   constructor() {
