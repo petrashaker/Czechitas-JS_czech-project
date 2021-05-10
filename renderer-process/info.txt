@@ -26,6 +26,8 @@ abcd
 //     daysDiv.innerText = [i];    
 // }
 
+const header = document.querySelector('header.header-news > div.header-news__container'); //může být pouze header-news__container bez šipky a header-news
+let articles; //vytáhli jsme proměnnou, kterou používáme ve fci, aby byla globální
 
 //VYŽÁDÁNÍ DAT ZE SERVERU
 /* verze 1
@@ -50,3 +52,6 @@ fetch('http://localhost:3000/news.json')
         articles = data.articles;
         populateNewsCarousel(data.articles, carouselItemStart); //data je objekt a přistupuji k articles (které jsou na serveru)
     });
+
+const carouselItemCount = 2; //upravuje počet zpráv v aplikaci
+carousel.populateNewsCarousel(data.articles, carouselItemStart); //data je objekt a přistupuji k articles (které jsou na serveru)

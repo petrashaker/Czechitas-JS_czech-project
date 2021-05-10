@@ -28,16 +28,16 @@ export class Carousel {
     if (undefined !== news) {
       this.articles = news;
     }
-    this.header.innerText = ''; //pokud bychom nedali, zprávy při posouvání by se dvojily, tímto se vyčistí div a znovu se tam vytáhnou další zprávy a tak pořád dokola
-    for (let i = this.carouselItemStart; i <
-    (this.carouselItemStart + this.carouselItemsCount); i++) { //startAt přidáno pro posouvání carouselu
+    this.header.innerText = ''; 
+    for(let i = this.carouselItemStart; i <
+    (this.carouselItemStart + this.carouselItemsCount); i++) { 
       const newsValue = this.articles[i];
       const newsArticle = new NewsArticle();
       const newsDiv = newsArticle.createDivForNews(newsValue);
-      this.header.appendChild(newsDiv); //append = připojit na konec, tzn. nahoře se header vyčistí (prázdný string) a zase se přidá další zpráva
-    }
+      this.header.appendChild(newsDiv); 
     this.checkButtonsVisibility();
   }
+}
 
   checkButtonsVisibility() {
     this.buttonLeft.hidden = this.carouselItemStart === 0;
@@ -46,5 +46,3 @@ export class Carousel {
   }
 
 }
-
-
