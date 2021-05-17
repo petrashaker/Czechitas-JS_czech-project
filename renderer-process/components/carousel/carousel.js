@@ -32,10 +32,9 @@ export class Carousel {
     for(let i = this.carouselItemStart; i <
     (this.carouselItemStart + this.carouselItemsCount); i++) { 
       const newsValue = this.articles[i];
-      const newsArticle = new NewsArticle();
-      const newsDiv = newsArticle.createDivForNews(newsValue);
-      this.header.appendChild(newsDiv); 
-    this.checkButtonsVisibility();
+      const newsArticle = new NewsArticle(newsValue); //přidán newsValue
+      this.header.appendChild(newsArticle); 
+      this.checkButtonsVisibility();
   }
 }
 

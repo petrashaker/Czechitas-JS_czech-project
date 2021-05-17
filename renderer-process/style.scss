@@ -1,4 +1,7 @@
 @import 'colors';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import './components/day/day.scss';
+@import './components/news-article/news-article.scss';
 
 html {
     font-size: 62.5%; /* tzn 10px, protože standard je 16px */
@@ -82,4 +85,9 @@ header.header-news {
     min-height: 18rem;
 }
 
+section.main-content {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+  }
  

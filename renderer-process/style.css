@@ -1,4 +1,18 @@
 @charset "UTF-8";
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+.day {
+  color: red;
+}
+
+app-news-article {
+  background-size: cover;
+  min-height: 18rem;
+  flex: 1 0 0;
+}
+app-news-article > span {
+  color: white;
+}
+
 html {
   font-size: 62.5%;
   /* tzn 10px, protože standard je 16px */
@@ -85,6 +99,12 @@ header.header-news > button:hover {
 }
 header.header-news > div.header-news__container {
   display: flex;
+}
+
+section.main-content {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

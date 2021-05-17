@@ -1,9 +1,9 @@
-div.news-article {
+app-news-article {
   background-size: cover;
   min-height: 18rem;
   flex: 1 0 0;
 }
-div.news-article > span {
+app-news-article > span {
   color: white;
 }
 
