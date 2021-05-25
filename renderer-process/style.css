@@ -1,7 +1,15 @@
 @charset "UTF-8";
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-.day {
-  color: red;
+app-day {
+  background-color: #82A383;
+  color: #F7F7F7;
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+  aspect-ratio: 1/1;
+}
+app-day:hover {
+  box-shadow: 0 5px 10px rgba(35, 35, 35, 0.2);
 }
 
 app-news-article {
@@ -105,6 +113,18 @@ section.main-content {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1rem;
+}
+
+section.modal-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(35, 35, 35, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

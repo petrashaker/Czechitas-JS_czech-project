@@ -15,14 +15,20 @@ fetch('http://localhost:3000/news.json')
 
 const mainContent = document.querySelector('section.main-content');
 
-function populateDays() {
-    for (let i = 1; i < 31; i++) {
-        const newDay = new Day();
-        mainContent.appendChild(newDay);
-    }
-}
-populateDays();
+const currentDate = new Date();
+const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0).getDate();
 
+for (let i = 1; i <= maxDate; i++) {
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+    mainContent.appendChild(new Day(dayDate));
+}
+
+const buttonOpenModal = document.getElementById('open-modal');
+const modalContainer = document.querySelector('.modal-container');
+
+buttonOpenModal.addEventListener('click', () => {
+    modalContainer.hidden = false;
+});
 
 
 
