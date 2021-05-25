@@ -1,7 +1,23 @@
 import {NewsArticle} from '../news-article/news-article.js';
 
-export class Carousel {
+export class Carousel extends HTMLElement {
   constructor() {
+    super();
+    
+    this.innerHTML = `
+    <header class="header-news">
+      <div class="header-news__container"></div>  
+
+      <button id="carousel-button-left">
+          <i class="fas fa-chevron-left"></i>
+      </button>
+     
+      <button  id="carousel-button-right" class="last">
+          <i class="fas fa-chevron-right"></i>
+      </button>
+    </header>
+    `;
+
     this.carouselItemStart = 0;
     this.carouselItemsCount = 2;
 
@@ -32,7 +48,7 @@ export class Carousel {
     for(let i = this.carouselItemStart; i <
     (this.carouselItemStart + this.carouselItemsCount); i++) { 
       const newsValue = this.articles[i];
-      const newsArticle = new NewsArticle(newsValue); //přidán newsValue
+      const newsArticle = new NewsArticle(newsValue);
       this.header.appendChild(newsArticle); 
       this.checkButtonsVisibility();
   }
@@ -45,3 +61,5 @@ export class Carousel {
   }
 
 }
+
+customElements.define('app-carousel', Carousel);

@@ -3,7 +3,9 @@ import { Carousel } from './components/carousel/carousel.js';
 import { Day } from './components/day/day.js';
 
 const header = document.querySelector('header.header-news > div.header-news__container'); 
-const carousel = new Carousel();
+
+const carousel = document.querySelector('app-carousel');
+
 
 fetch('http://localhost:3000/news.json')
     .then(serverResponse => serverResponse.text())
@@ -30,6 +32,9 @@ buttonOpenModal.addEventListener('click', () => {
     modalContainer.hidden = false;
 });
 
+// for (let i = 1; i < 31; i++) {
+//     mainContent.appendChild(new Day(i));
+// }
 
 
 
