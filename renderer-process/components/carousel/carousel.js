@@ -22,7 +22,7 @@ export class Carousel extends HTMLElement {
     this.carouselItemsCount = 2;
 
     this.header = document.querySelector(
-        'header.header-news > div.header-news__container',
+        'header.header-news > div.header-news__container'
     );
 
     this.buttonLeft = document.querySelector('#carousel-button-left');

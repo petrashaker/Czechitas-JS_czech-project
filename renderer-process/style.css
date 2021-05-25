@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-<<<<<<< HEAD
 app-day {
   background-color: #82A383;
   color: #F7F7F7;
@@ -13,8 +12,6 @@ app-day:hover {
   box-shadow: 0 5px 10px rgba(35, 35, 35, 0.2);
 }
 
-=======
->>>>>>> ukol-c-4
 app-news-article {
   background-size: cover;
   min-height: 18rem;
@@ -125,9 +122,6 @@ section.modal-container {
   top: 0;
   left: 0;
   background-color: rgba(35, 35, 35, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
