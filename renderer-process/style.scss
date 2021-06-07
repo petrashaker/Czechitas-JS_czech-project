@@ -120,11 +120,32 @@ section.modal-container {
 }
 
 .separator {
-    content: ' ';
     border-bottom: 1px solid $light-dark;
     margin: 1rem 0;;
 }
 
 .modal-actions {
     padding-top: 1rem;
+}
+
+#modal-form {
+    & .row {
+        display: flex;
+        padding: 8px 0;
+        justify-content: space-between;
+        position: relative;
+        &::after {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid $light-dark;
+        }
+    }
+    display: flex;
+    flex-direction: column;
+}
+.hidden {
+    display: none !important;
 }
