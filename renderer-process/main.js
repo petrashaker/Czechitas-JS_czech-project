@@ -1,6 +1,7 @@
 import { NewsArticle } from './components/news-article/news-article.js';
 import { Carousel } from './components/carousel/carousel.js';
 import { Day } from './components/day/day.js';
+import { currentTime, modalContainerClock, clockModalShow, modalAppear} from './components/clock/clock.js';
 
 const header = document.querySelector('header.header-news > div.header-news__container'); 
 
@@ -83,19 +84,8 @@ function showDayModal() {
 //zadefinujeme si vlastní políčk na objektu, nemusíme toto použít, můžeme udělat i export/import a dát fci do samostatného souboru
 window.showModal = showDayModal;
 
-const exampleArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
-exampleArray.forEach(it => {
-    console.log(it);
-})
 
-const rlt = exampleArray.map(it => {
-    return it + 1;
-})
-console.log(rlt);
 
-const rlt2 = exampleArray.filter(it => {
-    const isEven = it % 2 === 0; //pokud je hodnota (it) dělitelná dvěma a zůstatek rovná se nula, tak číslo bude párové
-    return isEven; 
-});
-console.log(rlt2);
+
+

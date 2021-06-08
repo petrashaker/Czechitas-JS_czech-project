@@ -149,3 +149,29 @@ section.modal-container {
 .hidden {
     display: none !important;
 }
+
+////// úkol č. 5 /////////
+.modal-container-clock {
+    background-color:rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0; /*schová modal*/
+    pointer-events: none; /*aby šlo klikat na button*/
+}
+
+.modal-container-clock.show {
+    pointer-events: auto;
+    opacity: 1;   
+ } 
+ 
+ .modal-clock {
+     background-color: white;
+     width: 100%;
+     padding: 30px 50px;
+     border-radius: 5px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+     text-align: center;
+ }
