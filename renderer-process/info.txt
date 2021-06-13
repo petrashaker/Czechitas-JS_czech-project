@@ -70,3 +70,23 @@ const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 
             <div class="modal-body">Snažím se tvořit JS, haha</div>
         </section>
     </template>
+
+
+    const exampleArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+exampleArray.forEach(it => {
+    console.log(it);
+})
+
+const rlt = exampleArray.map(it => {
+    return it + 1;
+})
+console.log(rlt);
+
+const rlt2 = exampleArray.filter(it => {
+    const isEven = it % 2 === 0; //pokud je hodnota (it) dělitelná dvěma a zůstatek rovná se nula, tak číslo bude párové
+    return isEven; 
+});
+console.log(rlt2);
+
+// row.getElementsByName('gender'); //gender vytahuji ze serveru, row mám vytažené jako constantu ve fci showDayModal v main.js

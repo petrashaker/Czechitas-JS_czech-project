@@ -40,9 +40,20 @@ function showDayModal() {
     cancelButton.addEventListener('click', closeAction);
     
     modal.querySelector('#save-button').addEventListener('click', () => {
+        //vytahujeme data z formuláře
         const formRef = document.querySelector('#modal-form');
         const formData = new FormData(formRef);
-        const isHoliday = formData.get('isHolidayControl') === 'on';
+        const data = formData.entries(); //entries viz dokumentace formData
+
+        const object = { }; //prázdný objekt
+
+        for(let formValue of data) { //formValeu = jeden řádek z formuláře, který je array
+            const key = formValu[0];
+            const value = formValue[1];
+            //object.gender = 'Female';   stejný zápis o řádek níže ale všeobecný
+            object[key] = value;  //bracket notation for objects - přistupuji k hodnotě proměnné - object.key = JS hledá přímo "slovo" key object.key = value; === object['key'] = value; !== object[key] = value;
+        }
+
     });
 
     //místo modal. mohu mít i document. ale musím pak celou část přesunout bod document.body.appendChild(modal)
@@ -66,36 +77,59 @@ function showDayModal() {
         console.log(item);
     }
  
+    let contactsArray; //vytáhnu si data jako cache 
+
     fetch('http://localhost:3000/contacts')
-    .then(serverResponse => serverResponse.text())
-    .then(responseText => {
-        const data = JSON.parse(responseText);
+        .then(serverResponse => serverResponse.text())
+        .then(responseText => {
+        contactsArray = JSON.parse(responseText);
+        createOptions(contactsArray);
+    });
+
+    const radioButtons = document.querySelectorAll('#genderSelectRow > input'); //querySelectorAll vrací itirovatelný objekt
+
+    for (let radio of radioButtons) {
+        radio.addEventListener('change', () => {
+            //vytahujeme data z formuláře a z html používáme name (je stejný pro Female i Male)
+            const formRef = document.querySelector('#modal-form');
+            const formData = new FormData(formRef);
+            const gender = formData.get('gender'); //z html pod name = "gender"
+            const filteredContacts = contactsArray.filter(contact => {
+                return contact.gender === gender; //contact je objekt na serveru
+                //vyber jeden gender a "=== gender" porovnej s hodnotou, kterou mame zakliknutou ve formuláři
+            })
+            createOptions(filteredContacts);
+        });
+    }
+}
+
+function createOptions(contactsArray) {
         const select = document.querySelector('#eventAttendees');
-        data.forEach(item => {
+
+        //vyhodím všechny hodnoty, vynuluju hodnoty
+        //select.innerText = ''; 
+
+        //pokud používám dvoje uvozovky, musí byt jiné
+        //select.innerHTML = '<option value=" "> </option>'; 
+
+        //nuluji hodnoty jiným způsobem
+        const odlOptions = document.querySelectorAll('.hakunamatata');
+        odlOptions.forEach(opt => {
+            select.removeChild(opt);
+            //opt.remove(); je to správně, ale starší prohlížeče by to nemuseli přečíst
+        });
+
+        
+        contactsArray.forEach(item => {
             const option = document.createElement('option');
             option.setAttribute('value', item.id);
             option.innerText = `${item.first_name} ${item.last_name}`;
+            option.classList.add('hakunamatata');
             select.appendChild(option);
-        })
-    })
+        });
 }
 
 //zadefinujeme si vlastní políčk na objektu, nemusíme toto použít, můžeme udělat i export/import a dát fci do samostatného souboru
 window.showModal = showDayModal;
 
-const exampleArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
-exampleArray.forEach(it => {
-    console.log(it);
-})
-
-const rlt = exampleArray.map(it => {
-    return it + 1;
-})
-console.log(rlt);
-
-const rlt2 = exampleArray.filter(it => {
-    const isEven = it % 2 === 0; //pokud je hodnota (it) dělitelná dvěma a zůstatek rovná se nula, tak číslo bude párové
-    return isEven; 
-});
-console.log(rlt2);
