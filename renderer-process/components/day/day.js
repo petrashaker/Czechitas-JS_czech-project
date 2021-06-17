@@ -31,7 +31,7 @@ export class Day extends HTMLElement {
     }
 
     handleClickEvent() {
-        window.showModal();
+        window.showModal(this.date); //musí zde být parametr, protože v main.js je parametr ve fci showModal
     }
 }
 
