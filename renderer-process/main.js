@@ -1,7 +1,7 @@
 import { NewsArticle } from './components/news-article/news-article.js';
 import { Carousel } from './components/carousel/carousel.js';
 import { Day } from './components/day/day.js';
-// import { Calender } from './components/calender/calender.js';
+import { Calender } from './components/calender/calender.js';
 
 const header = document.querySelector('header.header-news > div.header-news__container'); 
 
@@ -45,6 +45,7 @@ const mainContent = document.querySelector('section.main-content');
 const currentDate = new Date();
 const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
+// vytvoření kalendáře dle čísla dnů
 for (let i = 1; i <= maxDate; i++) {
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
     mainContent.appendChild(new Day(dayDate));
@@ -202,3 +203,10 @@ function createOptions(contactsArray) {
 
 //zadefinujeme si vlastní políčk na objektu, nemusíme toto použít, můžeme udělat i export/import a dát fci do samostatného souboru
 window.showModal = showDayModal;
+
+//úkol č. 6
+
+
+
+
+

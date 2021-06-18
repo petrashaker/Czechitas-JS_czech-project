@@ -12,3 +12,7 @@ app-day {
         box-shadow: 0 5px 10px transparentize($black, 0.8);
     }
 }
+
+app-day.day-chosen {
+    background-color: yellow;
+}

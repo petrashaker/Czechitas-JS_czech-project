@@ -59,7 +59,7 @@ carousel.populateNewsCarousel(data.articles, carouselItemStart); //data je objek
 const maxDate = new Date(2021, 4, 0); //rok 2021, měsíc duben (JS začíná měsíce od nuly), den 0 - ukáže se poslední den v měsíci (dny začíná od jedničky, nula ukáže poslední den)
 new Date(2021, 4, 0) -- 30 dubna 2021
 new Date(2021, 4, 1) -- 1 května 2021
-new Date(currentDate.getFullYear()), currentDate.getMonth(), 0) -- 2021 April 30 (programovali jsme 19.května 2021)
+new Date(currentDate.getFullYear(), currentDate.getMonth(), 0) -- 2021 April 30 (programovali jsme 19.května 2021)
 const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); -- 2021 May 31
 
 //debugger; - používáme pro zastavení kodu, abychom rozkličkovali chybu
