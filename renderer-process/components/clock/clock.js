@@ -43,11 +43,12 @@ export function clockModalShow(keyStrokeTime, callback){
     let lastKeyTime = Date.now();
     
     document.addEventListener('keydown', event => {
-       const charList = 'abcdefghijklmnopqrstuvwxyz';
        const key = event.key.toLowerCase();
         let currentTime = Date.now();
 
-        if (charList.indexOf(key) === -1) return;
+        if (/[az]/.test(key)) {
+          return;
+        }
 
         if(currentTime - lastKeyTime > keyStrokeTime) {
             password = [];
