@@ -30,9 +30,12 @@ currentTime();
 export const modalContainerClock = document.getElementById('modal-container-clock');
 
 // automatické skrytí modalu po 5 sekundách
-setInterval(function(){
-    modalContainerClock.classList.remove('show');
-}, 5000);
+// Tohle je problematické - docílíme tím toho, že se po každých pěti vteřinách
+// modal skryje - tzn. pokud se trefím s jeho otevřením těsně před tento
+// okamžik, zobrazí se třeba jen na část vteřiny.
+// setInterval(function(){
+//     modalContainerClock.classList.remove('show');
+// }, 5000);
 
 
 export function clockModalShow(keyStrokeTime, callback){
@@ -59,7 +62,6 @@ export function clockModalShow(keyStrokeTime, callback){
 
         lastKeyTime = currentTime;
 
-
         console.log(password);
 
     });
@@ -67,6 +69,9 @@ export function clockModalShow(keyStrokeTime, callback){
 
 export function modalAppear() {
     modalContainerClock.classList.add('show');
+    setTimeout(() => {
+      modalContainerClock.classList.remove('show');
+    }, 5000);
 }
 
 clockModalShow(1000, modalAppear);
