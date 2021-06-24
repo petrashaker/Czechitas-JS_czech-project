@@ -46,7 +46,7 @@ export function clockModalShow(keyStrokeTime, callback){
        const key = event.key.toLowerCase();
         let currentTime = Date.now();
 
-        if (/[az]/.test(key)) {
+        if (/^[az]$/.test(key)) {
           return;
         }
 
